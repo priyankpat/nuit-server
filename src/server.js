@@ -25,11 +25,13 @@ app.get("/list-videos", (req, res) => {
     files.map((f, i) => {
       const type = mime.getType(`${dir}${f}`);
 
-      return {
-        id: i,
-        file: f,
-        type,
-      };
+      if (f !== ".gitignore") {
+        return {
+          id: i,
+          file: f,
+          type,
+        };
+      }
     })
   );
 });
